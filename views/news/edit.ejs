@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Article</title>
+</head>
+<body> -->
+    <div class="row">
+        <h1 class="text-center text-white"> Edit Article</h1>
+           <div class="col-6 offset-3">
+
+    <form action="/news/<%=f._id %>?_method=PUT" method="POST" enctype="multipart/form-data" novalidate class="val" >
+    <section class="mb-3">
+    <label class="form-label text-white" for="article">Title</label>
+    <input class="form-control" type="text" name="news[title]" id="article" value="<%= f.title %>" required>
+    <div class="valid-feedback">
+        Looks good!
+      </div><div class="invalid-feedback">
+        Please choose a username.
+      </div>
+</section>
+<section class="mb-3">
+    <label class="form-label text-white" for="description">Description</label>
+    <textarea class="form-control" cols="60" rows="5" name="news[description]" id="description" required><%=f.description%> </textarea>
+    <div class="valid-feedback">
+        Looks good!
+      </div><div class="invalid-feedback">
+        Please choose a username.
+      </div>
+</section>
+<section class="mb-3">
+    <label class="form-label text-white" for="featured">Featured</label>
+    <select class="form-control" id="featured" name="news[featured]" required>
+        <option value=true <%= f.featured=== true ? 'selected': '' %>>YES</option>
+        <option value=false <%= f.featured===false ? 'selected': '' %>>No</option> 
+    </select>
+</section>
+<section class="mb-3 custom-file">
+  <!-- <label class="form-label text-white" for="image">Image URL</label> -->
+  <!-- <input class="form-control" type="text" name="news[image]" id="image" value="<%=f.image%>" required>
+  <div class="valid-feedback">
+      Looks good!
+    </div><div class="invalid-feedback">
+      Please choose a username.
+    </div> -->
+    <label class="form-label text-white custom-file-label" for="image">Image</label>
+            <input class="form-control custom-file-input" type="file" name="image" id="image" multiple>
+</section>
+<section class="mb-3">
+  <%f.images.forEach((img,i)=>{%>
+    <img src="<%=img.thumbnail%>" class="img-thumbnail"alt="">
+    <div class="form-check-inline">
+      <input type="checkbox" id="<%=i%>" name="deleteImage[]" value="<%=img.filename%>">
+    </div>
+    <label class="text-white"for="<%=i%>">Delete?</label>
+  <% }) %>
+</section>
+<section class="mb-3">
+    <button class="btn btn-info">Submit</button>
+</section>
+    </form>
