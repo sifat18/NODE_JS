@@ -14,6 +14,7 @@ const passport= require('passport');
 const localpass= require('passport-local');
 const User= require('./models/user');
 
+const neCon=require('./Controllers/newsCon');
 
 
 const dbURL=process.env.DB_URL || 'mongodb://localhost:27017/Alpha';
@@ -94,12 +95,14 @@ app.use('/news',newss)
 app.use('/news/:id/comments',reviews)
 app.use('/', authInfo)
 
+app.get('/',neCon.index);
 app.use((err, req, res, next) => {
     const { status = 500, message = 'Something Went Wrong' } = err;
     res.status(status).render('news/error',{err})
 })
 
+const port= process.env.PORT || 3001;
 
-app.listen(3001, ()=>{
+app.listen(port, ()=>{
     console.log("started")
 })

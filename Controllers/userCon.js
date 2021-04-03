@@ -1,7 +1,7 @@
 const User= require('../models/user');
 
 module.exports.registerForm=(req,res)=>{
-    res.render("auth/register")
+    res.render("Auth/register")
     }
 
     module.exports.registered=async(req,res,next)=>{
@@ -21,7 +21,7 @@ module.exports.registerForm=(req,res)=>{
         }
     }
     module.exports.LOGIN=(req,res)=>{
-        res.render("auth/login")
+        res.render("Auth/login")
         }
     module.exports.logAuth=(req,res)=>{
         req.flash('success','Welcome Back');
