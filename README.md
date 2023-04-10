@@ -1,5 +1,5 @@
 # Welcome To News web Application
-here is the project link -[News](https://salty-sea-00954.herokuapp.com/news)
+here is the project link -[News](https://newsjs.onrender.com/)
 
 ## What is this application for?
 In this project any user can read the articles they want to read and have a nice chat in the comment section. That's not all! Even the viewers can post a news that they want to share by signing in.
